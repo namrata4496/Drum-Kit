@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Drum Kit
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <script src="drumKitJs.js"></script>
+    </head>
+    <body>
+        <div class="drum">
+        <div class="drum-container1">
+            <div class="keys "  data-keycode="65">
+                <div class="tune ">A
+                    <span style="font-size: medium;">Boom</span>
+                </div>
+            </div>
+         <div class="keys"  data-keycode="83">
+             <div class="tune">S
+                <span style="font-size: medium;">Clap</span>
+             </div>
+         </div>
+         <div class="keys"  data-keycode="68">
+             <div class="tune">D
+                <span style="font-size: medium;">Crash</span>
+             </div>
+         </div>
+         <div class="keys"  data-keycode="70">
+            <div class="tune">F
+                <span style="font-size: medium;">Hihat</span>
+            </div>
+        </div>
+        <div class="keys"  data-keycode="71">
+            <div class="tune">G
+                <span style="font-size: medium;">Kick-bass</span>
+            </div>
+        </div>
+         <div class="keys"  data-keycode="72">
+             <div class="tune">H
+                <span style="font-size: medium;">Kick</span>
+             </div>
+         </div>
+         <div class="keys"  data-keycode="74">
+             <div class="tune">J
+                <span style="font-size: medium;">Openhat</span>
+             </div>
+         </div>
+         <div class="keys"  data-keycode="75">
+             <div class="tune">K
+                <span style="font-size: medium;">Ride</span>
+             </div>
+         </div>
+         <div class="keys "  data-keycode="76">
+            <div class="tune ">L
+                <span style="font-size: medium;">Snare</span>
+            </div>
+        </div>
+    </div>
+    <div class="drum-container2">
+     <div class="keys"  data-keycode="90">
+         <div class="tune">Z
+            <span style="font-size: medium;">Snare 2</span>
+         </div>
+     </div>
+     <div class="keys"  data-keycode="88">
+         <div class="tune">X
+            <span style="font-size: medium;">Tink</span>
+         </div>
+     </div>
+     <div class="keys"  data-keycode="67">
+        <div class="tune">C
+            <span style="font-size: medium;">Tom-1</span>
+        </div>
+    </div>
+     <div class="keys"  data-keycode="86">
+         <div class="tune">V
+            <span style="font-size: medium;">Tom-2</span>
+         </div>
+     </div>
+     <div class="keys"  data-keycode="66">
+         <div class="tune">B
+            <span style="font-size: medium;">Tom-3</span>
+         </div>
+     </div>
+     <div class="keys"  data-keycode="78">
+         <div class="tune">N
+            <span style="font-size: medium;">Tom-4</span>
+         </div>
+     </div>
+     <div class="keys"  data-keycode="77">
+        <div class="tune">M
+            <span style="font-size: medium;">Tom</span>
+        </div>
+    </div>
+        </div>
+    </div>
+    <audio data-keycode="65" src="sound/boom.wav"></audio>
+    <audio data-keycode="83" src="sound/clap.wav"></audio>
+    <audio data-keycode="68" src="sound/crash.mp3"></audio>
+    <audio data-keycode="70" src="sound/hihat.wav"></audio>
+    <audio data-keycode="71" src="sound/kick-bass.mp3"></audio>
+    <audio data-keycode="72" src="sound/kick.wav"></audio>
+    <audio data-keycode="74" src="sound/openhat.wav"></audio>
+    <audio data-keycode="75" src="sound/ride.wav"></audio>
+    <audio data-keycode="76" src="sound/snare.mp3"></audio>
+    <audio data-keycode="90" src="sound/snare.wav"></audio>
+    <audio data-keycode="88" src="sound/tink.wav"></audio>
+    <audio data-keycode="67" src="sound/tom-1.mp3"></audio>
+    <audio data-keycode="86" src="sound/tom-2.mp3"></audio>
+    <audio data-keycode="66" src="sound/tom-3.mp3"></audio>
+    <audio data-keycode="78" src="sound/tom-4.mp3"></audio>
+    <audio data-keycode="77" src="sound/tom.wav"></audio>
+
+
+    <script>
+
+        window.addEventListener('keydown', (e) => {
+           let audio=document.querySelector(`audio[data-keycode='${e.keyCode}']`);
+            if(!audio)return;
+           audio.currentTime=0;
+            audio.play();
+            let g=document.querySelector(`.keys[data-keycode='${e.keyCode}']`)
+            g.classList.add('playing');
+            setTimeout(()=>{
+                g.classList.remove('playing');
+            },80)
+            console.log(e.keyCode);
+        })
+    </script>
+    </body>
+</html>
